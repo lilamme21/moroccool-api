@@ -56,18 +56,19 @@ export const getSingleHotel = async (req,res,next)=>{
         res.status(200).json(singleHotel);
     }
     catch(err){
-        next(err);
+        res.status(500).json({message:"Hotel Not Found"});
     }
 }
 
 //Get All Hotels Hotel//
 export const getAllHotels = async (req,res,next)=>{
 
+    const AllHotels = await Hotel.find({})
     try{
-
+        res.status(200).json(AllHotels);
     }
     catch(err){
-        next(err);
+        res.status(500).json({message:"Can't Get Hotels"});
     }
 }
 
